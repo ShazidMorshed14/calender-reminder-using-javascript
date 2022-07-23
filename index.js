@@ -8,7 +8,11 @@ let events = localStorage.getItem("events")
 
 const calendar = document.getElementById("calendar");
 const newEventModal = document.getElementById("newEventModal");
-const eventTitleInput = document.getElementById("eventTitleInput");
+const eventFirstNameInput = document.getElementById("eventFirstNameInput");
+const eventLastNameInput = document.getElementById("eventLastNameInput");
+const eventEmailInput = document.getElementById("eventEmailInput");
+const eventAgeInput = document.getElementById("eventAgeInput");
+const eventTimeInput = document.getElementById("eventTimeInput");
 const backDrop = document.getElementById("modalBackDrop");
 const weekdays = [
   "Sunday",
@@ -108,12 +112,29 @@ function closeModal() {
 }
 
 function saveEvent() {
-  if (eventTitleInput.value) {
+  if (
+    eventTitleInput.value &&
+    eventFirstNameInput &&
+    eventLastNameInput &&
+    eventEmailInput &&
+    eventAgeInput &&
+    eventTimeInput
+  ) {
     eventTitleInput.classList.remove("error");
+    eventFirstNameInput.classList.remove("error");
+    eventLastNameInput.classList.remove("error");
+    eventEmailInput.classList.remove("error");
+    eventAgeInput.classList.remove("error");
+    eventTimeInput.classList.remove("error");
 
     events.push({
       date: clicked,
       title: eventTitleInput.value,
+      FirstName: eventFirstNameInput.value,
+      LastName: eventLastNameInput.value,
+      email: eventEmailInput.value,
+      age: eventAgeInput.value,
+      time: eventTimeInput,
     });
 
     localStorage.setItem("events", JSON.stringify(events));
